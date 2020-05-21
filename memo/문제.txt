@@ -1,0 +1,114 @@
+
+A.원하는 값 추출 함수(재고파악-같은 값을 count 해서 찾을 수 있음)
+
+let color = ['빨강', '노랑', '보라', '파랑', '주황', '초록', '빨강', '노랑', '하늘', '주황', '초록', '파랑', '초록', '하늘', '주황', '갈색', '살색', '회색', '분홍']
+function colorNum(name){
+let count = 0;
+for(let i = 0; i < color.length; i++){
+let choiceColor = color[i];
+if(choiceColor == name){
+count += 1;
+}
+}
+return count;
+}
+
+ex) let red = colorNum('빨강');
+       console.log(red);
+
+
+
+
+
+B.원하는 값을 추출 (같은 값이 없는경우 count X)
+
+미세먼지 데이터에서 미세먼지 값과 00구를 추출
+function miseMise(num){
+let miseNum = 0;
+for(let i = 0; i < mise_list.length; i++){
+let miseList = mise_list[i];
+if(miseList['IDEX_MVL'] < num){
+let miseMvl = miseList['IDEX_MVL'];
+let miseNm = miseList['MSRSTE_NM'];
+console.log('미세먼지:' + miseNm + ' ' + miseMvl);
+}
+}
+return miseNum;
+}
+
+
+C.짝수클릭 시 / 홀수 클릭 시
+
+let num = 0;
+        function handleClick() {
+            num += 1;
+            if (num % 2 == 0) {
+                alert('짝짝짝👏');
+            } else {
+                alert('홀홀홀🎅');
+            }
+        }
+
+D. 이메일 판별하기
+
+ function q2() {
+            let email = $('선택자').val();
+            if(email.includes('@')){
+                let val = email.split('@')[1].split('.')[0];    <-  eunsim2609@naver.com   에서 naver만 가지고옴
+                alert(val);
+            }
+            else{
+                alert('이메일이 아닙니다.')
+            }
+
+
+
+
+F.어떤 값을 추가하고 버튼 클릭시 사라지게 함
+
+function q3() {
+            let name_box = $('선택자').val();
+            if(name_box==""){
+                alert('이름을 입력하세요.');
+                return;
+                }
+            let name_text = `<li>${name_box}</li>`;
+            $('ul아이디').append(name_text);
+
+function q3_remove() {
+            $('ul아이디').empty();
+             }
+
+
+H.클릭시 보이고 안보이게 하는 방법
+
+ function openclose() {
+            if($('#post-box').css('display')=='none'){
+                $('#post-box').show();
+                $('#btn-posting-box').text('포스팅박스 닫기');
+            }
+            else{
+                $('#post-box').hide();
+                $('#btn-posting-box').text('포스팅박스 열기');
+            }
+        }
+
+
+G. ajax 가지고오기(서울시 데이터: https://data.seoul.go.kr/dataList/datasetList.do)
+
+function data(){
+$('선택자').empty();     <- 새로 지워졋다 다시 쓰여짐
+$.ajax({
+type:"GET",
+url:가져올 정보 주소,
+data:{},
+success: function(inpo){
+let variable = inpo["RealtimeCityAir"]["row"];
+let first_var = inpo[원하는값];
+let second_var = inpo[두번쨰로원하는값];
+for(let i = 0; i < first_var.length; i++){
+let first_ivar = first_var[i];
+$('선택자').append(first_ivar);
+}
+})
+

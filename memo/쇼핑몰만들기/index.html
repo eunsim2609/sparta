@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>원페이지 쇼핑몰</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Indie+Flower&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Gamja Flower', cursive;
+        }
+
+        img {
+            width: 400px;
+            height: 400px;
+        }
+
+        h1 {
+            display: inline;
+        }
+
+        small {
+            font-size: 25px;
+        }
+
+        div {
+            display: block;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        p {
+            font-size: 14px;
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
+
+        #input {
+            width: 600px;
+            display: inline-block;
+            margin-left: 450px;
+        }
+
+        button {
+            margin-bottom: 200px;
+        }
+
+        span {
+            font-style: bold;
+        }
+
+        input {
+            margin-top: 20px;
+        }
+        
+        #usd{
+            color:blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="image">
+
+        <img id="openimg"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-2yOAlxM_Mj5JUXLPjkxNX7wyvzpnVtOscfxaZoqPOWPXgU7h&usqp=CAU" /></a>
+    </div>
+    <div>
+        <button id="button" type="submit" onclick="open_img()">이미지 닫기</button>
+    </div>
+    <div class="title">
+        <h1>벤자민 고무나무 </h1>
+        <small>가격: 90,000원/개</small>
+        <br>
+        <p><strong>소개:</strong> 뛰어난 공기정화효과를 가지고 있고, 실내 미세먼지를 흡수하는 능력 뿐만 아니라 <abbr title="질소와 수소로 이루어진 화합물">암모니아</abbr>,
+            <abbr title="유기화합물의 일종이다. 가장 간단한 알데히드이다. 메탄알이라고도 한다.">포름알데히드</abbr>, <abbr
+                title="유독성 기체이며 화산 활동이나 유기 물질이 분해될 때 자연적으로 생긴다. ">아황산가스</abbr> 제거 등에도 탁월한 효과를 보입니다.</p>
+        <p><strong>관리:</strong> 너무 지나치게 뻗은 가지는 잘라주고, 적당량의 햇빛을 받을 수 있는 곳에 둬야하며 겉흙이 완전히 말랐을 때 충분한 물을 줍니다.</p>
+    </div>
+    <div>
+        <p id="usd" onclick="usd()">환율정보</p>
+    </div>
+    <div id="input">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">주문자 이름</span>
+            </div>
+            <input type="text" class="form-control" id="user-name" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">수량</span>
+            </div>
+            <input type="number" id="item-num" class="form-control" min="1" max="5" value="" placeholder="--수량을 선택하세요--"
+                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+            </div>
+            <input type="text" id="user-addr" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
+            </div>
+            <input type="tel" id="user-tel" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
+        </div>
+        <button type="button" class="btn btn-warning" onclick="order_box()">주문하기</button>
+    </div>
+    <script>
+        let user_name = $('#user-name').val();
+        let item_num = $('#item-num').val();
+        let user_addr = $('#user-addr').val();
+        let user_tel = $('#user-tel').val();
+
+        function order_box(user_name, item_num, user_addr, user_tel) {
+            let order_check = confirm('주문자 이름:' + user_name + '\n' +
+                '수량:' + item_num + '\n' +
+                '주소:' + user_addr + '\n' +
+                '전화번호:' + user_tel);
+            if (order_check) {
+                alert('주문이 완료되었습니다.');
+            }
+            else if (user_name == '') {
+                alert('이름을 입력해주세요!');
+            }
+            else if (item_num == '') {
+                alert('수량을 입력해주세요!');
+            }
+            else if (user_addr == '') {
+                alert('주소를 입력해주세요!');
+            }
+            else if (user_tel == '') {
+                alert('번호를 입력해주세요!');
+            }
+        }
+        $(document).ready(function usd() {
+             $('#usd').empty();
+            $.ajax({
+                type: "GET",
+                url: "https://api.manana.kr/exchange/rate.json",
+                data: {},
+                success: function (respons) {
+                    let rows = respons[1]['rate'];
+                    let usd_code = `<p>달러+&#183;+원 환율:${rows}</p>`;
+                    $('#usd').append(usd_code);
+                }
+
+            })
+        });
+
+       
+
+        function open_img() {
+                if ($('#openimg').css('display') == 'none') {
+                    $('#button').text('이미지 닫기');
+                    $('#openimg').show();
+                }
+                else {
+                    $('#button').text('이미지 열기');
+                    $('#openimg').hide();
+                }
+            }
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
